@@ -1,0 +1,415 @@
+{
+ "breadcrumbs": [
+  {
+   "id": 4154,
+   "name": "Детям",
+   "seo_tail": "default-kids",
+   "url": "/c/4154/default-kids/"
+  },
+  {
+   "id": 5378,
+   "name": "Мальчикам",
+   "seo_tail": "default-malchikam",
+   "url": "/c/5378/default-malchikam/"
+  },
+  {
+   "id": 5381,
+   "name": "Аксессуары",
+   "seo_tail": "default-aksydlyamalchikov",
+   "url": "/c/5381/default-aksydlyamalchikov/"
+  },
+  {
+   "id": 5383,
+   "name": "Рюкзаки",
+   "seo_tail": "accs_ns-ryukzakiboys",
+   "url": "/c/5383/accs_ns-ryukzakiboys/"
+  }
+ ],
+ "product": {
+  "actions": [],
+  "attributes": [
+   {
+    "key": "sku",
+    "title": "Артикул",
+    "value": "RTLACE745701"
+   },
+   {
+    "key": "upper_material",
+    "title": "Материал верха",
+    "value": "полиэстер"
+   },
+   {
+    "key": "width",
+    "title": "Ширина",
+    "value": "30 см"
+   },
+   {
+    "key": "height",
+    "title": "Высота",
+    "value": "40 см"
+   },
+   {
+    "key": "bag_bottom_width",
+    "title": "Ширина дна",
+    "value": "15 см"
+   },
+   {
+    "key": "shoulder_strap",
+    "title": "Плечевой ремень",
+    "value": "90 см"
+   },
+   {
+    "key": "season_wear",
+    "title": "Сезон",
+    "value": "мульти"
+   },
+   {
+    "key": "color_family",
+    "title": "Цвет",
+    "value": "желтый"
+   },
+   {
+    "key": "print",
+    "title": "Узор",
+    "value": "рисунки и надписи"
+   },
+   {
+    "key": "num_pockets",
+    "title": "Внутренние карманы",
+    "value": "1"
+   },
+   {
+    "key": "a4_format",
+    "title": "Формат А4",
+    "value": "помещается"
+   },
+   {
+    "key": "production_country",
+    "title": "Страна производства",
+    "value": "Мьянма"
+   },
+   {
+    "key": "bags_clasp",
+    "title": "Застежка",
+    "value": "молния"
+   }
+  ],
+  "average_rating": 4.6,
+  "badges": [
+   {
+    "text": "40",
+    "type": "discount",
+    "url": "/c/5378/default-malchikam/?is_sale=1"
+   }
+  ],
+  "best_category": {
+   "gender_segment": "boys",
+   "id": "5383",
+   "image_url": "https://a.lmcdn.ru/resize/cms/144x144/top_menu/subcategories/category_5383.jpg",
+   "seo_tail": "accs_ns-ryukzakiboys",
+   "size_table_id": "0",
+   "title": "Рюкзаки"
+  },
+  "brand": {
+   "id": "1841",
+   "image": "guess_1595429928.jpeg",
+   "is_beauty": false,
+   "is_kids": false,
+   "is_premium": false,
+   "is_sport": false,
+   "seo_tail": "brand-guess",
+   "thumbnail_image": "https://a.lmcdn.ru/brands/guess_1595429928.jpeg",
+   "title": "Guess"
+  },
+  "breadcrumbs": [
+   {
+    "gender_segment": "kids",
+    "id": 4154,
+    "image_path": "top_menu/subcategories/category_4154.jpg",
+    "label": "Детям",
+    "name": "Детям",
+    "url": "default-kids"
+   },
+   {
+    "gender_segment": "boys",
+    "id": 5378,
+    "image_path": "top_menu/subcategories/category_5378.jpg",
+    "label": "Мальчикам",
+    "name": "Мальчикам",
+    "url": "default-malchikam"
+   },
+   {
+    "gender_segment": "boys",
+    "id": 5381,
+    "image_path": "top_menu/subcategories/02-accessories-k.jpg",
+    "label": "Аксессуары",
+    "name": "Аксессуары",
+    "url": "default-aksydlyamalchikov"
+   },
+   {
+    "gender_segment": "boys",
+    "id": 5383,
+    "image_path": "top_menu/subcategories/category_5383.jpg",
+    "label": "Рюкзаки",
+    "name": "Рюкзаки",
+    "url": "accs_ns-ryukzakiboys"
+   }
+  ],
+  "cashback": {
+   "description": "Вернем до 365 баллов на карту Lamoda",
+   "landing_page_url": "https://m.lamoda.ru/lp/tinkoff/?sv=mob\u0026is_webview=1"
+  },
+  "catalog_links": [
+   {
+    "deeplink": "lamoda://ru/cb/5383?b=1841",
+    "description": "Бренд и категория",
+    "link": "/cb/5383-1841/accs_ns-ryukzakiboys/",
+    "thumbnail_image": "https://a.lmcdn.ru/brands/guess_1595429928.jpeg",
+    "title": "Все Рюкзаки Guess",
+    "type": "category_brand"
+   },
+   {
+    "deeplink": "lamoda://ru/b/1841",
+    "description": "Бренд",
+    "link": "/b/1841/brand-guess/",
+    "thumbnail_image": "https://a.lmcdn.ru/resize/cms/144x144/product_page/brand.jpg",
+    "title": "Другие товары Guess",
+    "type": "brand"
+   },
+   {
+    "deeplink": "lamoda://ru/n/5383",
+    "description": "Категория",
+    "link": "/c/5383/accs_ns-ryukzakiboys/",
+    "thumbnail_image": "https://a.lmcdn.ru/resize/cms/144x144/top_menu/subcategories/category_5383.jpg",
+    "title": "Все Рюкзаки",
+    "type": "category"
+   }
+  ],
+  "collection": "Весна-лето 2023",
+  "colored_products": [],
+  "colors": [
+   {
+    "id": "613",
+    "title": "желтый"
+   }
+  ],
+  "counters": {
+   "buy_per_day": 0,
+   "buy_per_week": 0,
+   "photoreviews": 1,
+   "questions": 0,
+   "reviews": 5,
+   "view_per_day": 0,
+   "view_per_week": 0
+  },
+  "delivery": {
+   "best_delivery_info": {
+    "best_terms": {
+     "date_max": "2023-07-11T11:41:59.861Z",
+     "date_min": "2023-07-11T11:41:59.861Z"
+    },
+    "delivery_data": [
+     {
+      "courier": {
+       "date_max": "2023-07-16T11:41:59.861Z",
+       "date_min": "2023-07-11T11:41:59.861Z",
+       "is_special_conditions": false,
+       "is_tryon_able": false,
+       "is_tryon_allowed": true,
+       "price": 299,
+       "price_type": "free"
+      },
+      "type": "courier"
+     },
+     {
+      "pickup": {
+       "date_max": "2023-07-21T11:41:59.861Z",
+       "date_min": "2023-07-11T11:41:59.861Z",
+       "is_special_conditions": false,
+       "is_tryon_able": false,
+       "is_tryon_allowed": true,
+       "price": 299,
+       "price_type": "free"
+      },
+      "type": "pickup"
+     }
+    ],
+    "description": "Доставка этого товара в Пермский край, г. Пермь: 4 дня, c проверкой, 0 - 299 ₽."
+   },
+   "type": "best_delivery_info"
+  },
+  "description": "Рюкзак выполнен из текстильного материала. Детали: 1 отделение с застежкой на молнии, 1 внутренний карман на липучке, 1 внешний карман на молнии, регулируемые плечевые ремни.",
+  "discount": 40,
+  "discount_lamoda_amount": 3480,
+  "discount_lamoda_and_loyalty_and_action": 40,
+  "fittings": {},
+  "gallery": [
+   "/R/T/RTLACE745701_18793070_1_v1.jpg",
+   "/R/T/RTLACE745701_18793071_2_v1.jpg",
+   "/R/T/RTLACE745701_18793072_3_v1.jpg",
+   "/R/T/RTLACE745701_18793073_4_v1.jpg"
+  ],
+  "gender": "boys",
+  "image_attributes": null,
+  "installment_info": "Или от 870 ₽ в месяц.",
+  "is_in_stock": true,
+  "is_sellable": true,
+  "long_attributes": [],
+  "old_price": 8700,
+  "other_category": {
+   "thumbnail_image": "https://a.lmcdn.ru/resize/cms/144x144/product_page/other.jpg"
+  },
+  "photoreviews": [
+   {
+    "url": "https://a.lmcdn.ru/photoreview/?key=a3f213c6-ef4f-6b55-7447-e50d637ed9a6-photoreview-s3.jpeg"
+   },
+   {
+    "url": "https://a.lmcdn.ru/photoreview/?key=a690c354-c69c-0d6c-1851-ce58eb22c81d-photoreview-s3.jpeg"
+   }
+  ],
+  "price": 5220,
+  "prices": {
+   "onsite": {
+    "discount": {
+     "amount": "3 480",
+     "amount_accumulated": "3 480",
+     "percent": 40,
+     "percent_accumulated": 40
+    },
+    "price": "5 220"
+   },
+   "original": {
+    "price": "8 700"
+   }
+  },
+  "replacement_products": null,
+  "reviews": {
+   "items": [
+    {
+     "created_time": "2023-07-05T22:36:07.222+03:00",
+     "fittings": {},
+     "id": "40139006",
+     "is_liked": false,
+     "is_user_verified": true,
+     "like_count": 0,
+     "photos": null,
+     "rating": 5,
+     "size": "RTLACE745701NS00",
+     "text": "Отличный рюкзак, цвет пушка",
+     "username": "о"
+    },
+    {
+     "created_time": "2023-07-05T22:35:35.245+03:00",
+     "fittings": {},
+     "id": "40138993",
+     "is_liked": false,
+     "is_user_verified": true,
+     "like_count": 0,
+     "photos": null,
+     "rating": 5,
+     "size": "RTLACE745701NS00",
+     "text": "Отличный рюкзак, цвет пушка ",
+     "username": "о"
+    },
+    {
+     "created_time": "2023-06-19T22:31:24.317+03:00",
+     "fittings": {},
+     "id": "39707795",
+     "is_liked": false,
+     "is_user_verified": true,
+     "like_count": 0,
+     "photos": null,
+     "rating": 5,
+     "text": "отличный",
+     "username": "елена ищенко"
+    },
+    {
+     "created_time": "2023-01-31T12:18:19.605+03:00",
+     "fittings": {},
+     "id": "35698565",
+     "is_liked": false,
+     "is_user_verified": true,
+     "like_count": 3,
+     "photos": [
+      {
+       "url": "https://a.lmcdn.ru/photoreview/?key=a3f213c6-ef4f-6b55-7447-e50d637ed9a6-photoreview-s3.jpeg"
+      },
+      {
+       "url": "https://a.lmcdn.ru/photoreview/?key=a690c354-c69c-0d6c-1851-ce58eb22c81d-photoreview-s3.jpeg"
+      },
+      {
+       "url": "https://a.lmcdn.ru/photoreview/?key=0a0f7dc9-07d3-db12-2157-327f44001509-photoreview-s3.jpeg"
+      },
+      {
+       "url": "https://a.lmcdn.ru/photoreview/?key=c2090e3c-c9aa-be4f-409c-906967936e6d-photoreview-s3.jpeg"
+      }
+     ],
+     "rating": 5,
+     "size": "RTLACE745701NS00",
+     "text": "Отличный рюкзак брала дочке но думаю сама поношу на лето отличный яркий не маленький ",
+     "username": "Kriss "
+    },
+    {
+     "answer": "Здравствуйте, Наталья!\r\nЦвет товаров на фото может немного отличаться от реального цвета товаров, так как мы делаем фотографии при очень ярком освещении. Также, на цвет товара на фото может влиять цветопередача вашего монитора.\r\nХорошего дня!",
+     "created_time": "2023-01-30T12:40:04.812+03:00",
+     "fittings": {},
+     "id": "35668954",
+     "is_liked": false,
+     "is_user_verified": true,
+     "like_count": 1,
+     "photos": null,
+     "rating": 3,
+     "size": "RTLACE745701NS00",
+     "text": "Цвет не соответствует фото, размер очень маленький, как для ребенка. Не стоит этих денег",
+     "username": "Наталья"
+    }
+   ],
+   "sort": "date",
+   "sort_direction": "desc"
+  },
+  "seasons": [
+   {
+    "id": "5592",
+    "title": "мульти"
+   }
+  ],
+  "seller": {
+   "business_model": "lamoda",
+   "delivery_profile": "LM",
+   "id": "1",
+   "is_lamoda": true,
+   "is_tryon": true,
+   "title": "Lamoda"
+  },
+  "seo_tail": "bags-guess-ryukzak",
+  "seo_title": "Рюкзак Guess - цвет: желтый, коллекция: мульти. БЕСПЛАТНАЯ доставка по России!",
+  "size_recommendations": {
+   "footty": {
+    "can_recommend": false,
+    "has_measurements": false
+   }
+  },
+  "size_scale_code": "NoScale",
+  "sizes": [
+   {
+    "brand_id": "3507",
+    "brand_size_system": "NS",
+    "brand_title": "00",
+    "id": "35151",
+    "is_universal": true,
+    "shipment_type": null,
+    "size_system": "RUS",
+    "sku": "RTLACE745701NS00",
+    "stock_quantity": 10,
+    "tax_vat": 20,
+    "title": "00"
+   }
+  ],
+  "sku": "RTLACE745701",
+  "sku_supplier": "L3RZ01WFER0",
+  "subset_id": 3,
+  "thumbnail": "/R/T/RTLACE745701_18793070_1_v1.jpg",
+  "title": "Рюкзак",
+  "type": "Bags"
+ }
+}

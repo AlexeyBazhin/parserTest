@@ -1,0 +1,414 @@
+[
+ {
+  "breadcrumbs": [
+   {
+    "id": 4153,
+    "name": "Женщинам",
+    "seo_tail": "default-women",
+    "url": "/c/4153/default-women/"
+   },
+   {
+    "id": 557,
+    "name": "Аксессуары",
+    "seo_tail": "accs-zhenskieaksessuary",
+    "url": "/c/557/accs-zhenskieaksessuary/"
+   },
+   {
+    "id": 567,
+    "name": "Рюкзаки",
+    "seo_tail": "bags-ryukzaki",
+    "url": "/c/567/bags-ryukzaki/"
+   },
+   {
+    "id": 3088,
+    "name": "Рюкзаки",
+    "seo_tail": "bags-ryukzaki-gorodskie-women",
+    "url": "/c/3088/bags-ryukzaki-gorodskie-women/"
+   }
+  ],
+  "product": {
+   "actions": [],
+   "attributes": [
+    {
+     "key": "sku",
+     "title": "Артикул",
+     "value": "MP002XW0X4M5"
+    },
+    {
+     "key": "upper_material",
+     "title": "Материал верха",
+     "value": "текстиль"
+    },
+    {
+     "key": "width",
+     "title": "Ширина",
+     "value": "30 см"
+    },
+    {
+     "key": "height",
+     "title": "Высота",
+     "value": "30 см"
+    },
+    {
+     "key": "bag_bottom_width",
+     "title": "Ширина дна",
+     "value": "14 см"
+    },
+    {
+     "key": "shoulder_strap",
+     "title": "Плечевой ремень",
+     "value": "120 см"
+    },
+    {
+     "key": "season_wear",
+     "title": "Сезон",
+     "value": "мульти"
+    },
+    {
+     "key": "color_family",
+     "title": "Цвет",
+     "value": "желтый"
+    },
+    {
+     "key": "print",
+     "title": "Узор",
+     "value": "однотонный"
+    },
+    {
+     "key": "num_pockets",
+     "title": "Внутренние карманы",
+     "value": "4"
+    },
+    {
+     "key": "a4_format",
+     "title": "Формат А4",
+     "value": "помещается"
+    },
+    {
+     "key": "color_of_accessories",
+     "title": "Цвет фурнитуры",
+     "value": "черный"
+    },
+    {
+     "key": "guarantee_period",
+     "title": "Гарантийный период",
+     "value": "90 дней"
+    },
+    {
+     "key": "production_country",
+     "title": "Страна производства",
+     "value": "Китай"
+    },
+    {
+     "key": "bags_clasp",
+     "title": "Застежка",
+     "value": "молния"
+    }
+   ],
+   "average_rating": 4.2,
+   "badges": [
+    {
+     "text": "55",
+     "type": "discount",
+     "url": "/c/557/accs-zhenskieaksessuary/?is_sale=1"
+    }
+   ],
+   "best_category": {
+    "gender_segment": "women",
+    "id": "3088",
+    "image_url": "https://a.lmcdn.ru/resize/cms/144x144/top_menu/subcategories/category_3088.jpg",
+    "seo_tail": "bags-ryukzaki-gorodskie-women",
+    "size_table_id": "2121",
+    "title": "Рюкзаки"
+   },
+   "brand": {
+    "id": "5717",
+    "image": "tervolina_1595430815.jpeg",
+    "is_beauty": false,
+    "is_kids": false,
+    "is_premium": false,
+    "is_sport": false,
+    "seo_tail": "brand-tervolina",
+    "thumbnail_image": "https://a.lmcdn.ru/brands/tervolina_1595430815.jpeg",
+    "title": "Tervolina"
+   },
+   "breadcrumbs": [
+    {
+     "gender_segment": "women",
+     "id": 4153,
+     "image_path": "top_menu/subcategories/category_4153.jpg",
+     "label": "Женщинам",
+     "name": "Женщинам",
+     "url": "default-women"
+    },
+    {
+     "gender_segment": "women",
+     "id": 557,
+     "image_path": "top_menu/subcategories/category_557.jpg",
+     "label": "Аксессуары",
+     "name": "Аксессуары",
+     "size_table_id": 2121,
+     "url": "accs-zhenskieaksessuary"
+    },
+    {
+     "gender_segment": "women",
+     "id": 567,
+     "image_path": "top_menu/subcategories/041-ryukzak-wm.jpg",
+     "label": "Рюкзаки",
+     "name": "Рюкзаки",
+     "size_table_id": 2121,
+     "url": "bags-ryukzaki"
+    },
+    {
+     "gender_segment": "women",
+     "id": 3088,
+     "image_path": "top_menu/subcategories/category_3088.jpg",
+     "image_stub": "product_page/other.jpg",
+     "label": "Рюкзаки",
+     "name": "Рюкзаки",
+     "size_table_id": 2121,
+     "url": "bags-ryukzaki-gorodskie-women"
+    }
+   ],
+   "cashback": {
+    "description": "Вернем до 280 баллов на карту Lamoda",
+    "landing_page_url": "https://m.lamoda.ru/lp/tinkoff/?sv=mob\u0026is_webview=1"
+   },
+   "catalog_links": [
+    {
+     "deeplink": "lamoda://ru/cb/3088?b=5717",
+     "description": "Бренд и категория",
+     "link": "/cb/3088-5717/bags-ryukzaki-gorodskie-women/",
+     "thumbnail_image": "https://a.lmcdn.ru/brands/tervolina_1595430815.jpeg",
+     "title": "Все Рюкзаки Tervolina",
+     "type": "category_brand"
+    },
+    {
+     "deeplink": "lamoda://ru/b/5717",
+     "description": "Бренд",
+     "link": "/b/5717/brand-tervolina/",
+     "thumbnail_image": "https://a.lmcdn.ru/resize/cms/144x144/product_page/brand.jpg",
+     "title": "Другие товары Tervolina",
+     "type": "brand"
+    },
+    {
+     "deeplink": "lamoda://ru/n/3088",
+     "description": "Категория",
+     "link": "/c/3088/bags-ryukzaki-gorodskie-women/",
+     "thumbnail_image": "https://a.lmcdn.ru/resize/cms/144x144/top_menu/subcategories/category_3088.jpg",
+     "title": "Все Рюкзаки",
+     "type": "category"
+    }
+   ],
+   "collection": "Весна-лето 2023",
+   "colored_products": [],
+   "colors": [
+    {
+     "id": "613",
+     "title": "желтый"
+    }
+   ],
+   "counters": {
+    "buy_per_day": 0,
+    "buy_per_week": 0,
+    "photoreviews": 1,
+    "questions": 0,
+    "reviews": 5,
+    "view_per_day": 0,
+    "view_per_week": 0
+   },
+   "delivery": {
+    "best_delivery_info": {
+     "best_terms": {
+      "date_max": "2023-07-29T12:38:16.090Z",
+      "date_min": "2023-07-29T12:38:16.090Z"
+     },
+     "delivery_data": [
+      {
+       "courier": {
+        "date_max": "2023-08-04T12:38:16.090Z",
+        "date_min": "2023-07-29T12:38:16.090Z",
+        "is_special_conditions": false,
+        "is_tryon_able": false,
+        "is_tryon_allowed": true,
+        "price": 349,
+        "price_type": "free",
+        "threshold": 4500
+       },
+       "type": "courier"
+      },
+      {
+       "pickup": {
+        "date_max": "2023-08-02T12:38:16.090Z",
+        "date_min": "2023-07-29T12:38:16.090Z",
+        "is_special_conditions": false,
+        "is_tryon_able": false,
+        "is_tryon_allowed": true,
+        "price": 299,
+        "price_type": "free"
+       },
+       "type": "pickup"
+      }
+     ],
+     "description": "Доставка этого товара в г. Санкт-Петербург: завтра, c проверкой, 0 - 349 ₽."
+    },
+    "type": "best_delivery_info"
+   },
+   "description": "Рюкзак выполнен из текстильного материала. Детали: застежка на молнии, внутри 1 отделение, 2 кармана на молнии, 2 кармана без застежки, 4 внешних кармана на молнии, 2 боковых кармана без застежки, съемный плечевой регулируемый ремень.",
+   "discount": 55,
+   "discount_lamoda_amount": 4993,
+   "discount_lamoda_and_loyalty_and_action": 55,
+   "fittings": {},
+   "gallery": [
+    "/M/P/MP002XW0X4M5_19912833_1_v1.jpg",
+    "/M/P/MP002XW0X4M5_19912834_2_v1.jpg",
+    "/M/P/MP002XW0X4M5_19912835_3_v1.jpg",
+    "/M/P/MP002XW0X4M5_19933573_9_v1_2x.jpg"
+   ],
+   "gender": "women",
+   "image_attributes": null,
+   "installment_info": "Или от 667 ₽ в месяц.",
+   "is_in_stock": true,
+   "is_sellable": true,
+   "long_attributes": [],
+   "old_price": 8990,
+   "other_category": {
+    "thumbnail_image": "https://a.lmcdn.ru/resize/cms/144x144/product_page/other.jpg"
+   },
+   "photoreviews": [
+    {
+     "url": "https://a.lmcdn.ru/photoreview/?key=069bf9e2-5a84-9514-b415-a92e51b0cd65-photoreview-s3.jpeg"
+    }
+   ],
+   "price": 3997,
+   "prices": {
+    "onsite": {
+     "discount": {
+      "amount": "4 993",
+      "amount_accumulated": "4 993",
+      "percent": 55,
+      "percent_accumulated": 55
+     },
+     "price": "3 997"
+    },
+    "original": {
+     "price": "8 990"
+    }
+   },
+   "replacement_products": null,
+   "reviews": {
+    "items": [
+     {
+      "created_time": "2023-07-24T14:11:38.121+03:00",
+      "fittings": {},
+      "id": "40627473",
+      "is_liked": false,
+      "is_user_verified": false,
+      "like_count": 0,
+      "photos": null,
+      "rating": 5,
+      "text": "Отличный.  Ремни мне кажется больше бы черные подошли, но это не проблема,  они съёмные можно поменять. Рюкзак понравился",
+      "username": "Светлана"
+     },
+     {
+      "created_time": "2023-07-20T20:51:20.433+03:00",
+      "fittings": {},
+      "id": "40534467",
+      "is_liked": false,
+      "is_user_verified": true,
+      "like_count": 1,
+      "photos": null,
+      "rating": 5,
+      "text": "Мне понравился: много кармашков, яркий, вместительный, удобный из-за широких ремней.",
+      "username": "Галина Мироненкова"
+     },
+     {
+      "created_time": "2023-07-19T09:49:57.980+03:00",
+      "fittings": {},
+      "id": "40490107",
+      "is_liked": false,
+      "is_user_verified": true,
+      "like_count": 0,
+      "photos": [
+       {
+        "url": "https://a.lmcdn.ru/photoreview/?key=069bf9e2-5a84-9514-b415-a92e51b0cd65-photoreview-s3.jpeg"
+       }
+      ],
+      "rating": 3,
+      "text": "На рост 165 шлейки слишком длинные даже в самом затянутом состоянии, на фото показываю. Кроме того они перекручиваются - это просто две ленты, ничем не скреплённые. Они скорее декоративные, если что-то тяжёлое положить в рюкзак, то наверняка будут впиваться - нет никакой мягкой подкладки на плечи. Поэтому отказ.",
+      "username": "мария"
+     },
+     {
+      "created_time": "2023-06-22T19:33:18.267+03:00",
+      "fittings": {},
+      "id": "39787788",
+      "is_liked": false,
+      "is_user_verified": true,
+      "like_count": 3,
+      "photos": null,
+      "rating": 5,
+      "text": "Отличный стильный рюкзак, понравтлся моей 18 летней дочке и 28 летней, а ношу я в  52 года и отлично себя чувствую",
+      "username": "Юлиана"
+     },
+     {
+      "created_time": "2023-06-06T10:06:38.661+03:00",
+      "fittings": {},
+      "id": "39329504",
+      "is_liked": false,
+      "is_user_verified": false,
+      "like_count": 2,
+      "photos": null,
+      "rating": 3,
+      "text": "Хороший с внешних нариканий нет, но молнию не смогла открыть и курьер тоже. Очень жаль\n\n",
+      "username": "Мария"
+     }
+    ],
+    "sort": "date",
+    "sort_direction": "desc"
+   },
+   "seasons": [
+    {
+     "id": "5592",
+     "title": "мульти"
+    }
+   ],
+   "seller": {
+    "business_model": "lamoda",
+    "delivery_profile": "LM",
+    "id": "1",
+    "is_lamoda": true,
+    "is_tryon": true,
+    "title": "Lamoda"
+   },
+   "seo_tail": "bags-tervolina-ryukzak",
+   "seo_title": "Рюкзак Tervolina - цвет: желтый, коллекция: мульти. БЕСПЛАТНАЯ доставка по России!",
+   "size_recommendations": {
+    "footty": {
+     "can_recommend": false,
+     "has_measurements": false
+    }
+   },
+   "size_scale_code": "NS",
+   "sizes": [
+    {
+     "brand_id": "3507",
+     "brand_size_system": "NS",
+     "brand_title": "00",
+     "id": "35151",
+     "is_universal": true,
+     "shipment_type": null,
+     "size_system": "RUS",
+     "sku": "MP002XW0X4M5NS00",
+     "stock_quantity": 3,
+     "tax_vat": 20,
+     "title": "00"
+    }
+   ],
+   "sku": "MP002XW0X4M5",
+   "subset_id": 3,
+   "thumbnail": "/M/P/MP002XW0X4M5_19912833_1_v1.jpg",
+   "title": "Рюкзак",
+   "type": "Bags"
+  }
+ }
+]
