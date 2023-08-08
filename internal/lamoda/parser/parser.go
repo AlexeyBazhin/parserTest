@@ -153,15 +153,6 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 		}
 	}()
 
-	// for {
-	// 	select {
-	// 	case <-ctx.Done():
-	// 		workersWg.Wait()
-	// 	default:
-	// 		//goodsWg.Add(1)
-	// 		goodMapChan <- GetGoodAPI()
-	// 	}
-	// }
 	quit <- <-ctx.Done()
 	close(skuChan)
 	if err := SaveLastSku(); err != nil {
@@ -323,3 +314,4 @@ func (p *Parser) ParseLamodaByRequest() error {
 
 	return nil
 }
+

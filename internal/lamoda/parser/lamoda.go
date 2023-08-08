@@ -48,6 +48,3 @@ func GetGoodsByRequest(driver selenium.WebDriver, request string) []string {
 
 	return goodsId
 }
-
-func GetGoodsByNumbers(number string) {
-}
