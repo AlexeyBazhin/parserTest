@@ -50,20 +50,36 @@ var (
 	workersWg   *sync.WaitGroup
 	lastSku     map[string]string
 	skuPatterns []string
+	countParsed int64
+	mu          *sync.Mutex
 )
 
 func ReadLastSku() (err error) {
-	file, err := os.Open("last_sku.json")
+	file, err := os.Open(lastSkuFilename)
 	if err == nil {
-		err = json.NewDecoder(file).Decode(lastSku)
+		err = json.NewDecoder(file).Decode(&lastSku)
 	}
 	return
+}
+
+func SaveLastSku() (err error) {
+	file, err := os.Create(lastSkuFilename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	data, _ := json.MarshalIndent(lastSku, "", " ")
+	_, err = file.Write(data)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func ValidateLastSku() {
 	for _, pattern := range skuPatterns {
 		if _, ok := lastSku[pattern]; !ok {
-			log.Printf("Последнее обработанное значение для паттерна артикула %v не найдено", pattern)
+			log.Printf("Последнее обработанное значение для паттерна артикула %v не найдено \n", pattern)
 			newSku := ""
 			for i := len(pattern); i < skuLen; i++ {
 				newSku += "A"
@@ -78,6 +94,8 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 	goodMapChan = make(chan map[string]any)
 	goodWg = &sync.WaitGroup{}
 	workersWg = &sync.WaitGroup{}
+	mu = &sync.Mutex{}
+	lastSku = make(map[string]string)
 
 	skuPatterns = []string{
 		"MP002XW0", "MP002XW1", "MP002XM0", "MP002XM1", "MP002XM2",
@@ -92,7 +110,7 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 	}
 
 	if err := ReadLastSku(); err != nil {
-		log.Printf("Ошибка при чтении файла последних sku: %q\n", err)
+		log.Printf("[READ-LAST-SKU] Ошибка при чтении файла последних sku: %q\n", err)
 	}
 	ValidateLastSku()
 
@@ -104,18 +122,33 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 	for _, userAgent := range userAgents {
 		workersWg.Add(1)
 		go startWorker(userAgent)
+		time.Sleep(4 * time.Second) // fix
 	}
 
 	go func() {
 		for goodMapFull := range goodMapChan {
-			goodId, ok := goodMapFull["id"].(string)
+			sku, ok := goodMapFull["sku"].(string)
 			if !ok {
-				panic(nil)
+				log.Printf("[GOOD-MAP]: не удалось получить sku\n")
+				goodWg.Done()
+				continue
 			}
-			goodMap := goodMapFull["payload"].(map[string]any)
-			if err := p.AwsClients[0].PushJSON(bucketName, goodId, goodMap); err != nil {
-				log.Fatal(err)
+			goodMap, ok := goodMapFull["payload"].(map[string]any)
+			if !ok {
+				log.Printf("[GOOD-MAP]: не удалось получить payload\n")
+				goodWg.Done()
+				continue
 			}
+			if err := p.AwsClients[0].PushJSON(bucketName, sku, goodMap); err != nil {
+				log.Printf("[GOOD-MAP][PUSH-JSON]: %q\n", err)
+				goodWg.Done()
+				continue
+			}
+
+			mu.Lock()
+			countParsed++
+			log.Printf("\n[GOOD-MAP]: %v) %s\n\n", countParsed, sku)
+			mu.Unlock()
 			goodWg.Done()
 		}
 	}()
@@ -131,6 +164,9 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 	// }
 	quit <- <-ctx.Done()
 	close(skuChan)
+	if err := SaveLastSku(); err != nil {
+		log.Printf("[SAVE-LAST-SKU]: %q\n", err)
+	}
 	workersWg.Wait()
 	close(goodMapChan)
 	goodWg.Wait()
@@ -140,6 +176,7 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 
 func getSku(pattern string, quit chan struct{}) {
 	sku := lastSku[pattern]
+	count := 0
 	for {
 		select {
 		case <-quit:
@@ -148,6 +185,16 @@ func getSku(pattern string, quit chan struct{}) {
 		default:
 			sku = generateSku(sku)
 			skuChan <- pattern + sku
+			runtime.Gosched()
+			count++
+			if count%10 == 0 {
+				mu.Lock()
+				lastSku[pattern] = sku
+				if err := SaveLastSku(); err != nil {
+					log.Printf("[SAVE-LAST-SKU]: %q\n", err)
+				}
+				mu.Unlock()
+			}
 		}
 	}
 }
@@ -180,27 +227,30 @@ func generateSku(prevSku string) string {
 }
 
 func startWorker(userAgent string) {
-	// fmt.Printf("Воркер под номером %v начал работу\n", workerNum)
-	for sku := range skuChan { // каждый воркер слушает общий канал с данными
+	log.Printf("Воркер под UserAgent %s начал работу\n", userAgent[:20])
+	for sku := range skuChan {
 
 		if goodMap, err := getGoodAPI(userAgent, sku); err != nil {
-			fmt.Println(err) // TODO кастомные ошибки
+			log.Printf("[WORKER]: %q\n", err) // TODO кастомные ошибки
 		} else {
-			goodMapChan <- goodMap
+			fullMap := make(map[string]any)
+			fullMap["sku"] = sku
+			fullMap["payload"] = goodMap
+			goodWg.Add(1)
+			goodMapChan <- fullMap
 		}
-		// fmt.Printf("Воркер %v обработал операцию: %v\n", workerNum, data)
+		log.Printf("Воркер %s обработал sku: %v\n", userAgent[:20], sku)
 		runtime.Gosched()
 		time.Sleep(3 * time.Second)
 	}
-	// fmt.Printf("Воркер под номером %v завершил работу\n", workerNum)
 	workersWg.Done()
+	log.Printf("Воркер под номером %v завершил работу\n", userAgent[:12])
 }
 
 func getGoodAPI(userAgent string, sku string) (map[string]any, error) {
 	req, err := http.NewRequest(http.MethodGet, lamodaApiURL+sku, nil)
 	if err != nil {
-		fmt.Printf("client: could not create request: %s\n", err)
-		os.Exit(1)
+		return nil, fmt.Errorf("[GetRequest]: client: не удалось создать запрос: %q\n", err)
 	}
 	req.Header.Set("User-Agent", userAgent)
 	resp, err := http.DefaultClient.Do(req)
@@ -208,12 +258,12 @@ func getGoodAPI(userAgent string, sku string) (map[string]any, error) {
 		return nil, err
 	}
 	if resp.StatusCode == 400 {
-		return nil, fmt.Errorf("Status code 400")
+		return nil, fmt.Errorf("[GetRequest]: Status code 400\n")
 	}
 	defer resp.Body.Close()
 	good := make(map[string]any)
 	if err := json.NewDecoder(resp.Body).Decode(&good); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("[GetRequest]: не удалось спарсить в JSON: %q\n", err)
 	}
 
 	return good, nil

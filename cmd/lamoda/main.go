@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"parserTest/internal/common/awsS3"
-	"parserTest/internal/common/webDriver"
 	"parserTest/internal/lamoda/config"
 	"parserTest/internal/lamoda/parser"
 	"parserTest/internal/lamoda/server"
@@ -27,18 +26,18 @@ func main() {
 		log.Fatalln("[SERVICE][AWS] ERROR: ", err)
 	}
 
-	driver, seleniumService, err := webDriver.NewChromeDriver()
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer seleniumService.Stop()
+	// driver, seleniumService, err := webDriver.NewChromeDriver()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer seleniumService.Stop()
 
 	spider := parser.New(cfg,
 		[]*awsS3.S3{
 			awsClient,
 		},
 		[]selenium.WebDriver{
-			driver,
+			// driver,
 		})
 
 	srvr := server.New(spider, cfg)

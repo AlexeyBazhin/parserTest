@@ -9,7 +9,6 @@ import (
 
 const (
 	lamodaSearchURL = "https://www.lamoda.ru/catalogsearch/result/?q="
-	
 )
 
 func GetGoodsByRequest(driver selenium.WebDriver, request string) []string {
@@ -50,6 +49,5 @@ func GetGoodsByRequest(driver selenium.WebDriver, request string) []string {
 	return goodsId
 }
 
-func GetGoodsByNumbers(number string){
-
+func GetGoodsByNumbers(number string) {
 }
