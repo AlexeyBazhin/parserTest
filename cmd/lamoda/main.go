@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
-	"time"
 
 	"parserTest/internal/common/awsS3"
 	"parserTest/internal/lamoda/config"
@@ -43,12 +43,14 @@ func main() {
 	srvr := server.New(spider, cfg)
 	ctx, cancel := context.WithCancel(context.Background())
 
-	go srvr.ParseLamoda(ctx)
+	mainWg := &sync.WaitGroup{}
+	mainWg.Add(1)
+	go srvr.ParseLamoda(ctx, mainWg)
 
 	<-stop
 	cancel()
-
-	time.Sleep(3 * time.Second)
+	mainWg.Wait()
+	
 	// ctxClose, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	// defer cancel()
 	// err = srvr.Stop(ctxClose)

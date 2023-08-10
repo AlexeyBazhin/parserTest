@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
 	"runtime"
@@ -48,6 +49,7 @@ var (
 	goodMapChan chan map[string]any
 	goodWg      *sync.WaitGroup
 	workersWg   *sync.WaitGroup
+	skuWg       *sync.WaitGroup
 	lastSku     map[string]string
 	skuPatterns []string
 	countParsed int64
@@ -90,10 +92,11 @@ func ValidateLastSku() {
 }
 
 func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
-	skuChan = make(chan string, 10)
+	skuChan = make(chan string, 3) //размер подбирать
 	goodMapChan = make(chan map[string]any)
 	goodWg = &sync.WaitGroup{}
 	workersWg = &sync.WaitGroup{}
+	skuWg = &sync.WaitGroup{}
 	mu = &sync.Mutex{}
 	lastSku = make(map[string]string)
 
@@ -105,8 +108,8 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 
 	userAgents := []string{
 		"Mozilla/5.0 (Android 4.3; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0",
-		"Mozilla/5.0 (Linux; Android 4.3; GT-I9300 Build/JSS15J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36 OPR/42.9.2246.119956",
-		"Opera/9.80 (Android; Opera Mini/28.0.2254/66.318; U; en) Presto/2.12.423 Version/12.16",
+		//"Mozilla/5.0 (Linux; Android 4.3; GT-I9300 Build/JSS15J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36 OPR/42.9.2246.119956",
+		//"Opera/9.80 (Android; Opera Mini/28.0.2254/66.318; U; en) Presto/2.12.423 Version/12.16",
 	}
 
 	if err := ReadLastSku(); err != nil {
@@ -114,15 +117,17 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 	}
 	ValidateLastSku()
 
-	quit := make(chan struct{})
-	for _, pattern := range skuPatterns {
-		go getSku(pattern, quit)
-	}
+	// quit := make(chan struct{})
+	// for _, pattern := range skuPatterns {
+	// 	go getSku(pattern, quit)
+	// }
+
+	skuWg.Add(1)
+	go getSku(ctx, skuPatterns)
 
 	for _, userAgent := range userAgents {
 		workersWg.Add(1)
 		go startWorker(userAgent)
-		time.Sleep(4 * time.Second) // fix
 	}
 
 	go func() {
@@ -153,11 +158,9 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 		}
 	}()
 
-	quit <- <-ctx.Done()
+	// quit <- <-ctx.Done()
+	skuWg.Wait()
 	close(skuChan)
-	if err := SaveLastSku(); err != nil {
-		log.Printf("[SAVE-LAST-SKU]: %q\n", err)
-	}
 	workersWg.Wait()
 	close(goodMapChan)
 	goodWg.Wait()
@@ -165,27 +168,44 @@ func (p *Parser) ParseLamodaBySku(ctx context.Context) error {
 	return nil
 }
 
-func getSku(pattern string, quit chan struct{}) {
-	sku := lastSku[pattern]
+func getSku(ctx context.Context, patterns []string) {
+	// сохраняем текущие значения для каждого паттерна, храним их в памяти чтоб сохранять в json на выходе либо раз в 50 запросов
+	currentSkus := make([]string, len(patterns))
+	for i, pattern := range patterns {
+		currentSkus[i] = lastSku[pattern]
+	}
+
+	rand.Seed(time.Now().UnixNano())
 	count := 0
 	for {
 		select {
-		case <-quit:
-			lastSku[pattern] = sku
+		case <-ctx.Done():
+			// сохраняем на выходе те, которые лежат в памяти
+			for i, currentSku := range currentSkus {
+				lastSku[patterns[i]] = currentSku
+			}
+			if err := SaveLastSku(); err != nil {
+				log.Printf("[SAVE-LAST-SKU]: %q\n", err)
+			}
+			skuWg.Done()
 			return
 		default:
-			sku = generateSku(sku)
-			skuChan <- pattern + sku
-			runtime.Gosched()
+			skuWg.Add(1)
+			// случайным образом выбираем паттерн, для которого будем посылать следующий его перебираемый артикул
+			currentIndex := rand.Intn(len(currentSkus))
+			skuChan <- patterns[currentIndex] + currentSkus[currentIndex]      // в канал отправляем полноценный ску
+			currentSkus[currentIndex] = generateSku(currentSkus[currentIndex]) // перебор идет без паттерна
 			count++
-			if count%10 == 0 {
-				mu.Lock()
-				lastSku[pattern] = sku
+			// сохраняем раз в 50 запросов
+			if count%50 == 0 {
+				for i, currentSku := range currentSkus {
+					lastSku[patterns[i]] = currentSku
+				}
 				if err := SaveLastSku(); err != nil {
 					log.Printf("[SAVE-LAST-SKU]: %q\n", err)
 				}
-				mu.Unlock()
 			}
+			skuWg.Done()
 		}
 	}
 }
@@ -220,7 +240,6 @@ func generateSku(prevSku string) string {
 func startWorker(userAgent string) {
 	log.Printf("Воркер под UserAgent %s начал работу\n", userAgent[:20])
 	for sku := range skuChan {
-
 		if goodMap, err := getGoodAPI(userAgent, sku); err != nil {
 			log.Printf("[WORKER]: %q\n", err) // TODO кастомные ошибки
 		} else {
@@ -234,8 +253,8 @@ func startWorker(userAgent string) {
 		runtime.Gosched()
 		time.Sleep(3 * time.Second)
 	}
+	log.Printf("Воркер под номером %v завершил работу\n", userAgent[:20])
 	workersWg.Done()
-	log.Printf("Воркер под номером %v завершил работу\n", userAgent[:12])
 }
 
 func getGoodAPI(userAgent string, sku string) (map[string]any, error) {
@@ -260,6 +279,7 @@ func getGoodAPI(userAgent string, sku string) (map[string]any, error) {
 	return good, nil
 }
 
+// depricated: через селениум по запросам, json вроде немного отличается. Этим способом загрузил в s3 ~4.5k карточек
 func (p *Parser) ParseLamodaByRequest() error {
 	// if err := p.AwsClients[0].CreateBucket(bucketName); err != nil {
 	// 	return err
@@ -314,4 +334,3 @@ func (p *Parser) ParseLamodaByRequest() error {
 
 	return nil
 }
-

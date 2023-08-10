@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"sync"
 
 	"parserTest/internal/lamoda/config"
 	"parserTest/internal/lamoda/parser"
@@ -28,8 +29,9 @@ func New(parser *parser.Parser, cfg *config.Config) *Server {
 	}
 }
 
-func (s *Server) ParseLamoda(ctx context.Context) {
+func (s *Server) ParseLamoda(ctx context.Context, mainWg *sync.WaitGroup) {
 	if err := s.Parser.ParseLamodaBySku(ctx); err != nil {
 		fmt.Println(err)
 	}
+	mainWg.Done()
 }
